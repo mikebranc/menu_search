@@ -9,7 +9,7 @@ export default function SearchBar(){
         setTitle('')
     }
 return(
-    <Form onSubmit = {handleSubmit}>
+    <Form onSubmit = {handleSubmit} style={{width: '100%'}}>
     {(
         <>
         <Form.Group>
@@ -19,7 +19,7 @@ return(
             value={title}
             onChange= {(event) => setTitle(event.target.value)}/>
     </Form.Group>
-    <Button variant='primary' type='submit'>Search</Button>
+    {/* <Button variant='primary' type='submit'>Search</Button> */}
     </>
     )}
     <hr></hr>
