@@ -8,67 +8,21 @@ import SearchBar from '../Components/SearchBar'
 import bgPic from '../Images/eggs-toast.jpg'
 
 export default function Home(){
-    const [posts, setPosts] = useState([])
-    const[show, setShow] = useState(false)
-    const[postId, setPostId] = useState('')
-    const[loading, setLoading] = useState(false)
 
-  useEffect (() =>{
-    setLoading(true)
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then((json) => {
-      setPosts(json)
-      setLoading(false)
-    })
-  }, [setLoading, setPosts])
-  function addPostToList(newPost){
-    setPosts([newPost, ...posts])
-  }
-  function deletePost(postId){
-    setPosts((prevPosts) => prevPosts.filter((post)=> post.id !== postId))
-  }
-  function displayPostInModal(postId){
-    setPostId(postId)
-    setShow(true) 
-  }
-  function closePostModal(){
-    setShow(false)
-  }
- 
   
     return(
-        <div style={{height:'100vh', backgroundPosition:'center', backgroundImage:`url(${bgPic})`, backgroundSize: 'cover'}}>
+        <div style={{fontFamily: 'Rammetto One', height:'100vh', backgroundPosition:'center', backgroundImage:`url(${bgPic})`, backgroundSize: 'cover'}}>
         <div style={{backgroundColor: 'rgba(176, 186, 118, 0.3)', height:'100%'}}>
             <NavBar />
-            <div style={{opacity: '1',display: 'flex', alignItems: 'center', paddingTop: 200, flexDirection: 'column', width:'100%'}}>
-              <div style={{width: '50%' }}>
+            <div style={{opacity: '1',display: 'flex', alignItems: 'center',  paddingTop: 200, flexDirection: 'column', width:'100%'}}>
+              <div style={{width: '60%' }}>
                 <SearchBar />
               </div>
               <div >
-                <Button size = 'lg' style={{backgroundColor: "#EBD489"}}>Search</Button>
+                <Button  style={{ marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</Button>
               </div>
             </div>
-            
-            {/* <Container>
-                <Row className="justify-content-md-center" style={{marginTop: 60 }}>
-                    <Col xs lg="12">
-                        <h1 style={{textAlign: 'center'}}>Blog Posts</h1>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center" style={{marginTop: 20 }}>
-                    <Col xs lg="12">
-                        <SearchBar/>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center" style={{marginTop: 20 }}>
-                    <Col xs lg="12">
-                        <PostList posts={posts} deletePost = {deletePost} displayPostInModal = {displayPostInModal}/>
-                    </Col>
-                </Row>
-                <PostModal closePostModal = {closePostModal} show={show} postId = {postId}/>
-            </Container> */}
-    </div>
-    </div>
+        </div>
+        </div>
     )
 }
