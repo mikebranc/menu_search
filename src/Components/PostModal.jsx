@@ -88,19 +88,21 @@ export default function PostModal(props){
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Fat</td>
-                                    <td>{post.nutrition.nutrients[0].amount}</td>
+                                    <td>{post.nutrition.nutrients[0].amount}{post.nutrition.nutrients[0].unit}</td>
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[0].percentOfDailyNeeds}%`}}></div> 
+                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[0].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Carbs</td>
-                                    <td>{post.nutrition.nutrients[1].amount}</td>
+                                    <td>{post.nutrition.nutrients[1].amount}{post.nutrition.nutrients[1].unit}</td>
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[1].percentOfDailyNeeds}%`}}></div> 
+                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[1].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -110,15 +112,17 @@ export default function PostModal(props){
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[2].percentOfDailyNeeds}%`}}></div> 
+                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[2].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Protien</td>
-                                    <td>{post.nutrition.nutrients[3].amount}</td>
+                                    <td>{post.nutrition.nutrients[3].amount}{post.nutrition.nutrients[3].unit}</td>
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[3].percentOfDailyNeeds}%`}}></div> 
+                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[3].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
                                 </tr>
