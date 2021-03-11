@@ -1,0 +1,19 @@
+th,td{
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+.nutritionLabel{
+    font-weight: bold;
+    text-align: left;
+    padding-right:10px;
+}
+.dailyValue{
+    background-color: black;
+    width: 100%;
+    height: 25px;
+    border-radius: 10px;
+}
