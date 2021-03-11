@@ -6,18 +6,9 @@ import { matchPath } from "react-router"
    
 
 export default function SearchBar(props){
-   
-      
     const {getTitle} = props
     const [title, setTitle] = useState('')
     let history = useHistory()
-    const query = matchPath(history.location.pathname,{
-        path: '/results',
-        exact: true,
-        strict: false
-      })
-    //   console.log(query.isExact)
-
 
     function handleSubmit(event){
         event.preventDefault()
@@ -42,12 +33,11 @@ return(
                 value={title}
                 onChange = {handleChange}/>
         </Form.Group>
-            <button onClick={handleSubmit} style={{display: query.isExact ? 'null' : 'none', marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</button> 
+        <div style={{display:'flex', justifyContent:'center'}}>
+        {history.location.pathname == '/results' ? null : <button onClick={handleSubmit} style={{ marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</button> }
+        </div>
         </>
     )}  
     </Form>
 )
 }
-// query ? null :  <button onClick={handleSubmit}>submit</button> 
-
-//<hr></hr>

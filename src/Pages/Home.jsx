@@ -22,7 +22,6 @@ export default function Home(){
     history.push(`/results?query=${title}`)
     setTitle('')
   }
-  //backgroundImage:`url(${bgPic})`
 
     return(
         <div style={{fontFamily: 'Rammetto One', height:'100vh', backgroundPosition:'center', backgroundImage:`url(${bgPic})`, backgroundSize: 'cover'}}>
@@ -33,7 +32,6 @@ export default function Home(){
                 <SearchBar />
               </div>
               <div >
-                <Button getTitle = {getTitle} onClick={handleSubmit} style={{ marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</Button>
               </div>
             </div>
         </div>

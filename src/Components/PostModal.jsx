@@ -4,58 +4,27 @@ import '../style.css'
 
 export default function PostModal(props){
     const {postId, show, closePostModal} = props
-    //const [post, setPost] = useState(null)
+    const [post, setPost] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState(null)
     
-    const post = {
-        id: 424571,
-        title: "Bacon King Burger",
-        restaurantChain: "Burger King",
-        nutrition: {
-            nutrients: [
-                {
-                    name: "Fat",
-                    amount: 69,
-                    unit: "g",
-                    percentOfDailyNeeds: 30
-                },
-                {
-                    name: "Protein",
-                    amount: 57,
-                    unit: "g",
-                    percentOfDailyNeeds: 35
-                },
-                {
-                    name: "Calories",
-                    amount: 1040,
-                    unit: "cal",
-                    percentOfDailyNeeds: 50
-                },
-                {
-                    name: "Carbohydrates",
-                    amount: 48,
-                    unit: "g",
-                    percentOfDailyNeeds: 35
-                }
-            ]},
-        
-        // images: [
-        //     "https://images.spoonacular.com/file/wximages/424571-90x90.png",
-        //     "https://images.spoonacular.com/file/wximages/424571-312x231.png",
-        //     "https://images.spoonacular.com/file/wximages/424571-636x393.png"
-        // ]
-    }
-    
+ 
 
 
-// useEffect (() =>{
-//   setLoading(true)
-//   fetch(`https://api.spoonacular.com/food/menuItems/${postId}`)
-//   .then(response => response.json())
-//   .then((data) => {
-//     setPost(data)
-//     setLoading(false)
-//   })
-// }, [setLoading, setPost])
+useEffect (() =>{
+  setLoading(true)
+  fetch(`https://api.spoonacular.com/food/menuItems/${postId}?apiKey=26e16444248b4f4ab270b86a4f128fd9`)
+  .then(response => response.json())
+  .then((data) => {
+    setPost(data)
+    setLoading(false)
+  })
+}, [setLoading, setPost])
+
+function addImage(post){
+    setImage(post.images[2])
+}
+
 
     // useEffect(()=> {
     //     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
@@ -63,19 +32,20 @@ export default function PostModal(props){
     //     .then(json => setPost(json))
     // }, [setPost, postId])
 
-    if(!post){
-        return <Spinner animation="border" />
-    }
+    // if(!post && !post.images[0]){
+    //     return <Spinner animation="border" />
+    // }
     return (
-        <Modal size='xl' show={show} onHide={closePostModal} >
+    <Modal size='xl' show={show} onHide={closePostModal}>
+        if(post){
             <Modal.Header style={{ backgroundColor: '#EEEBE6'}} closeButton>
                 <Modal.Title style={{ color: 'black', width: '100%',display:'flex', justifyContent:'center', fontSize: '50px', fontFamily:'Roboto'}}>{post.title}</Modal.Title>
             </Modal.Header>
-            <Modal.Body style={{ color: 'black', fontFamily:'Roboto', fontWeight: '300', display: 'flex', justifyContent: 'center',alignItems:'center', backgroundColor: '#EEEBE6', width: '100%', flexDirection: 'column'}}>
+            <Modal.Body style={{ color: 'black', fontFamily:'Roboto', fontWeight: '300', display: 'flex', justifyContent: 'center',alignItems:'center', backgroundColor: '#EEEBE6', width: '100%', flexDirection: 'column', paddingBottom:'20px'}}>
                     <h1 style={{textAlign: 'center', marginBottom:'20px', fontFamily:'Roboto', fontWeight: '300'}}>{post.restaurantChain}</h1>
                     <div style={{width:'100%', display: 'flex'}}>
                         <div>
-                            <img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={"https://images.spoonacular.com/file/wximages/424571-636x393.png"} />
+                            {post.images[2] ? <Spinner animation="border" />:<img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={post.images[2]}></img>}
                         </div>
                         <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%', borderRadius:'10px', marginLeft:'28px'}}>
                             <h1 style={{ paddingTop: '20px',paddingBottom: '10px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
@@ -131,9 +101,10 @@ export default function PostModal(props){
 
                         </div>
                     </div>
-                    
-            {/* <img src={post?.images[1]} /> */}
-            </Modal.Body>
-        </Modal>
+                       
+            </Modal.Body>}else{
+                    <Spinner animation="border" />
+                        }    
+    </Modal>
     )
 }
