@@ -1,13 +1,14 @@
 import React, {useState} from 'react' 
 import {Form, Button, Card} from 'react-bootstrap'
+import {useHistory} from 'react-router-dom'
 
 export default function SearchBar(){
     const [title, setTitle] = useState('')
-
+    let history = useHistory()
     function handleSubmit(event){
         event.preventDefault()
+        history.push(`/results?query=${title}`)
         setTitle('')
-        
     }
 
 return(
