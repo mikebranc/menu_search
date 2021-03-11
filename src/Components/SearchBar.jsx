@@ -2,13 +2,22 @@ import React, {useState} from 'react'
 import {Form, Button, Card} from 'react-bootstrap'
 import {useHistory} from 'react-router-dom'
 
-export default function SearchBar(){
+   
+
+export default function SearchBar(props){
+
+    const {getTitle} = props
     const [title, setTitle] = useState('')
     let history = useHistory()
     function handleSubmit(event){
         event.preventDefault()
         history.push(`/results?query=${title}`)
         setTitle('')
+    }
+    
+    function handleChange(event){
+        setTitle(event.target.value)
+        getTitle(event.target.value)
     }
 
 return(
@@ -21,7 +30,7 @@ return(
             type='input' 
             placeholder='🔍 Search from over 115,000 menu items' 
             value={title}
-            onChange= {(event) => setTitle(event.target.value)}/>
+            onChange = {handleChange}/>
     </Form.Group>
     </>
     )}

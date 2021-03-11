@@ -6,10 +6,23 @@ import NavBar from '../Components/NavBar'
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import SearchBar from '../Components/SearchBar'
 import bgPic from '../Images/eggs-toast.jpg'
+import {useHistory} from 'react-router-dom'
+
 
 export default function Home(){
+  let history = useHistory()
+  const [title, setTitle] = useState('')
+  function handleSubmit(event){
+    event.preventDefault()
+    history.push(`/results?query=${title}`)
+    setTitle('')
+  }
+  function getTitle(event){
+    event.preventDefault()
+    history.push(`/results?query=${title}`)
+    setTitle('')
+  }
 
-  
     return(
         <div style={{fontFamily: 'Rammetto One', height:'100vh', backgroundPosition:'center', backgroundImage:`url(${bgPic})`, backgroundSize: 'cover'}}>
         <div style={{backgroundColor: 'rgba(176, 186, 118, 0.3)', height:'100%'}}>
@@ -19,7 +32,7 @@ export default function Home(){
                 <SearchBar />
               </div>
               <div >
-                <Button  style={{ marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</Button>
+                <Button getTitle = {getTitle} onClick={handleSubmit} style={{ marginTop: 80, borderRadius: 20, border: 0, backgroundColor: "#EBD489", color:'black', fontWeight:'bold', width: '250px', height: '70px', fontSize: 30}}>Search</Button>
               </div>
             </div>
         </div>

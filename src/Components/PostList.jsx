@@ -3,7 +3,6 @@ import {Card, Button, CardColumns, CardGroup } from 'react-bootstrap'
 import SearchBar from './SearchBar'
 export default function PostList(props){
     const { posts, displayPostInModal } = props
-    
     return ( 
         <div style={{paddingTop: 0}}>
             <CardColumns>
