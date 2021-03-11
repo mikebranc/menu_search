@@ -75,7 +75,7 @@ export default function PostModal(props){
                     <h1 style={{textAlign: 'center', marginBottom:'20px', fontFamily:'Roboto', fontWeight: '300'}}>{post.restaurantChain}</h1>
                     <div style={{width:'100%', display: 'flex'}}>
                         <div>
-                            <img style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={"https://images.spoonacular.com/file/wximages/424571-636x393.png"} />
+                            <img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={"https://images.spoonacular.com/file/wximages/424571-636x393.png"} />
                         </div>
                         <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%', borderRadius:'10px', marginLeft:'28px'}}>
                             <h1 style={{ paddingTop: '20px',paddingBottom: '10px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
