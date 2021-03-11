@@ -72,13 +72,13 @@ export default function PostModal(props){
                 <Modal.Title style={{ color: 'black', width: '100%',display:'flex', justifyContent:'center', fontSize: '50px', fontFamily:'Roboto'}}>{post.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ color: 'black', fontFamily:'Roboto', fontWeight: '300', display: 'flex', justifyContent: 'center',alignItems:'center', backgroundColor: '#EEEBE6', width: '100%', flexDirection: 'column'}}>
-                    <h1 style={{textAlign: 'center'}}>{post.restaurantChain}</h1>
+                    <h1 style={{textAlign: 'center', marginBottom:'20px', fontFamily:'Roboto', fontWeight: '300'}}>{post.restaurantChain}</h1>
                     <div style={{width:'100%', display: 'flex'}}>
                         <div>
-                            <img style={{ backgroundColor: 'white', borderRadius:'20px'}} src={"https://images.spoonacular.com/file/wximages/424571-636x393.png"} />
+                            <img style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={"https://images.spoonacular.com/file/wximages/424571-636x393.png"} />
                         </div>
-                        <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%'}}>
-                            <h1 style={{ paddingTop: '20px',paddingBottom: '20px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
+                        <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%', borderRadius:'10px', marginLeft:'28px'}}>
+                            <h1 style={{ paddingTop: '20px',paddingBottom: '10px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
                             <div>
                             <table style={{fontSize:'30px', padding:'45px', width:'100%'}}>
                                 <tr>
