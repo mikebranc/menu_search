@@ -8,18 +8,14 @@ export default function PostModal(props){
     const [loading, setLoading] = useState(false)
     const [image, setImage] = useState(null)
     
- 
 
-
-useEffect (() =>{
-  setLoading(true)
+useEffect (() =>{  
   fetch(`https://api.spoonacular.com/food/menuItems/${postId}?apiKey=26e16444248b4f4ab270b86a4f128fd9`)
   .then(response => response.json())
   .then((data) => {
-    setPost(data)
-    setLoading(false)
+    setPost(data) 
   })
-}, [setLoading, setPost])
+}, [setPost, postId])
 
 function addImage(post){
     setImage(post.images[2])
@@ -31,13 +27,13 @@ function addImage(post){
     //     .then(response => response.json())
     //     .then(json => setPost(json))
     // }, [setPost, postId])
-
-    // if(!post && !post.images[0]){
-    //     return <Spinner animation="border" />
-    // }
+    
+    if(!post){
+        return <Spinner animation="border" />
+    }
     return (
     <Modal size='xl' show={show} onHide={closePostModal}>
-        if(post){
+        {/* if(post){ */}
             <Modal.Header style={{ backgroundColor: '#EEEBE6'}} closeButton>
                 <Modal.Title style={{ color: 'black', width: '100%',display:'flex', justifyContent:'center', fontSize: '50px', fontFamily:'Roboto'}}>{post.title}</Modal.Title>
             </Modal.Header>
@@ -45,7 +41,7 @@ function addImage(post){
                     <h1 style={{textAlign: 'center', marginBottom:'20px', fontFamily:'Roboto', fontWeight: '300'}}>{post.restaurantChain}</h1>
                     <div style={{width:'100%', display: 'flex'}}>
                         <div>
-                            {post.images[2] ? <Spinner animation="border" />:<img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={post.images[2]}></img>}
+                            {!post.images[2] ? <Spinner animation="border" />:<img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={post.images[2]}></img>}
                         </div>
                         <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%', borderRadius:'10px', marginLeft:'28px'}}>
                             <h1 style={{ paddingTop: '20px',paddingBottom: '10px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
@@ -102,9 +98,11 @@ function addImage(post){
                         </div>
                     </div>
                        
-            </Modal.Body>}else{
+            </Modal.Body>
+            {/* }
+            else{
                     <Spinner animation="border" />
-                        }    
+                        }     */}
     </Modal>
     )
 }
