@@ -1,9 +1,5 @@
-import React, {useEffect, useState}  from 'react'
-import PostForm from '../Components/PostForm'
-import PostList from '../Components/PostList'
-import PostModal from '../Components/PostModal'
+import React, {useState}  from 'react'
 import NavBar from '../Components/NavBar'
-import {Container, Row, Col, Button} from 'react-bootstrap'
 import SearchBar from '../Components/SearchBar'
 import bgPic from '../Images/eggs-toast.jpg'
 import {useHistory} from 'react-router-dom'
@@ -13,11 +9,6 @@ export default function Home(){
   let history = useHistory()
   const [title, setTitle] = useState('')
   function handleSubmit(event){
-    event.preventDefault()
-    history.push(`/results?query=${title}`)
-    setTitle('')
-  }
-  function getTitle(event){
     event.preventDefault()
     history.push(`/results?query=${title}`)
     setTitle('')

@@ -5,9 +5,6 @@ import '../style.css'
 export default function PostModal(props){
     const {postId, show, closePostModal} = props
     const [post, setPost] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [image, setImage] = useState(null)
-    
 
 useEffect (() =>{  
   fetch(`https://api.spoonacular.com/food/menuItems/${postId}?apiKey=26e16444248b4f4ab270b86a4f128fd9`)
@@ -17,23 +14,11 @@ useEffect (() =>{
   })
 }, [setPost, postId])
 
-function addImage(post){
-    setImage(post.images[2])
-}
-
-
-    // useEffect(()=> {
-    //     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-    //     .then(response => response.json())
-    //     .then(json => setPost(json))
-    // }, [setPost, postId])
-    
     if(!post){
         return <Spinner animation="border" />
     }
     return (
     <Modal size='xl' show={show} onHide={closePostModal}>
-        {/* if(post){ */}
             <Modal.Header style={{ backgroundColor: '#EEEBE6'}} closeButton>
                 <Modal.Title style={{ color: 'black', width: '100%',display:'flex', justifyContent:'center', fontSize: '50px', fontFamily:'Roboto'}}>{post.title}</Modal.Title>
             </Modal.Header>
@@ -41,7 +26,7 @@ function addImage(post){
                     <h1 style={{textAlign: 'center', marginBottom:'20px', fontFamily:'Roboto', fontWeight: '300'}}>{post.restaurantChain}</h1>
                     <div style={{width:'100%', display: 'flex'}}>
                         <div>
-                            {!post.images ? <Spinner animation="border" />:<img alt='Tasty food' style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={post.images[2]}></img>}
+                            {!post.images ? <Spinner animation="border" /> : <img style={{ height: '640 px', width: '360px',backgroundColor: 'white', borderRadius:'20px'}} src={post.images[2]}></img>}
                         </div>
                         <div style={{backgroundColor: '#4249E7', width:'100%', height: '100%', borderRadius:'10px', marginLeft:'28px'}}>
                             <h1 style={{ paddingTop: '20px',paddingBottom: '10px', color: 'white', textAlign: 'center'}}>Nutritional Info</h1>
@@ -58,9 +43,9 @@ function addImage(post){
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[0].percentOfDailyNeeds}%`}}></div> 
-                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[0].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
+                                    <td><span className = 'dailyValueDetail'>{post.nutrition.nutrients[0].percentOfDailyNeeds}%</span></td>
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Carbs</td>
@@ -68,9 +53,9 @@ function addImage(post){
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[1].percentOfDailyNeeds}%`}}></div> 
-                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[1].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
+                                    <td><span className = 'dailyValueDetail'>{post.nutrition.nutrients[1].percentOfDailyNeeds}%</span></td>
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Calories</td>
@@ -78,9 +63,9 @@ function addImage(post){
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[2].percentOfDailyNeeds}%`}}></div> 
-                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[2].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
+                                    <td><span className = 'dailyValueDetail'>{post.nutrition.nutrients[2].percentOfDailyNeeds}%</span></td>
                                 </tr>
                                 <tr>
                                     <td className='nutritionLabel'>Protien</td>
@@ -88,21 +73,15 @@ function addImage(post){
                                     <td>
                                         <div className='dailyValue'>
                                         <div style={{borderRadius: '10px', backgroundColor: '#EBD489', height: '100%', width:`${post.nutrition.nutrients[3].percentOfDailyNeeds}%`}}></div> 
-                                        <span className = 'dailyValueDetail'>{post.nutrition.nutrients[3].percentOfDailyNeeds}%</span>
                                         </div>
                                     </td>
+                                    <td><span className = 'dailyValueDetail'>{post.nutrition.nutrients[3].percentOfDailyNeeds}%</span></td>
                                 </tr>
                                 </table>
                             </div>}
-
                         </div>
-                    </div>
-                       
+                    </div>       
             </Modal.Body>
-            {/* }
-            else{
-                    <Spinner animation="border" />
-                        }     */}
     </Modal>
     )
 }
